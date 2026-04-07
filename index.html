@@ -1,4 +1,4 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -70,9 +70,7 @@ html<!DOCTYPE html>
 
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
     padding: 24px 48px;
     display: flex;
@@ -81,507 +79,208 @@ html<!DOCTYPE html>
     background: linear-gradient(to bottom, rgba(7,9,15,0.95), transparent);
   }
 
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
-
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .nav-logo-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: var(--surface);
-    border: 1px solid var(--gold-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--gold-border);
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
   }
-
-  .nav-wordmark {
-    display: flex;
-    align-items: baseline;
-    gap: 1px;
-  }
-
-  .nav-wordmark span:first-child {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-
-  .nav-wordmark span:last-child {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 1px;
-  }
+  .nav-wordmark { display: flex; align-items: baseline; gap: 1px; }
+  .nav-wordmark span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; }
+  .nav-wordmark span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
 
   .nav-cta {
-    background: transparent;
-    border: 1px solid var(--gold-border);
-    color: var(--gold);
-    padding: 10px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    display: inline-block;
+    background: transparent; border: 1px solid var(--gold-border); color: var(--gold);
+    padding: 10px 24px; font-family: 'DM Sans', sans-serif; font-size: 13px;
+    font-weight: 500; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer;
+    transition: all 0.2s ease; text-decoration: none; display: inline-block;
   }
-
-  .nav-cta:hover {
-    background: var(--gold-dim);
-    border-color: var(--gold);
-  }
+  .nav-cta:hover { background: var(--gold-dim); border-color: var(--gold); }
 
   .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 48px 80px;
-    text-align: center;
-    z-index: 1;
-    overflow: hidden;
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 120px 48px 80px; text-align: center; z-index: 1; overflow: hidden;
   }
 
   .hero-glow {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
     background: radial-gradient(circle, rgba(212,168,75,0.08) 0%, transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
+    top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
   }
-
   .hero-glow-2 {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
+    position: absolute; width: 300px; height: 300px; border-radius: 50%;
     background: radial-gradient(circle, rgba(41,196,176,0.06) 0%, transparent 70%);
-    top: 30%;
-    right: 20%;
-    pointer-events: none;
+    top: 30%; right: 20%; pointer-events: none;
   }
 
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--gold-dim);
-    border: 1px solid var(--gold-border);
-    border-radius: 100px;
-    padding: 6px 16px;
-    margin-bottom: 40px;
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold-dim); border: 1px solid var(--gold-border);
+    border-radius: 100px; padding: 6px 16px; margin-bottom: 40px;
+    animation: fadeUp 0.8s ease forwards; opacity: 0;
   }
-
-  .hero-badge span {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--gold);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .hero-badge-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
-    animation: pulse 2s ease-in-out infinite;
-  }
+  .hero-badge span { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+  .hero-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); animation: pulse 2s ease-in-out infinite; }
 
   .hero-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(52px, 7vw, 96px);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-    max-width: 900px;
-    animation: fadeUp 0.8s 0.1s ease forwards;
-    opacity: 0;
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -1px; margin-bottom: 16px;
+    max-width: 900px; animation: fadeUp 0.8s 0.1s ease forwards; opacity: 0;
   }
-
   .hero-headline em { font-style: italic; color: var(--gold); }
 
   .hero-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 2.5vw, 28px);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--text-muted);
-    margin-bottom: 48px;
-    max-width: 640px;
-    line-height: 1.5;
-    animation: fadeUp 0.8s 0.2s ease forwards;
-    opacity: 0;
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300; font-style: italic; color: var(--text-muted);
+    margin-bottom: 48px; max-width: 640px; line-height: 1.5;
+    animation: fadeUp 0.8s 0.2s ease forwards; opacity: 0;
   }
 
   .hero-divider {
-    width: 1px;
-    height: 60px;
+    width: 1px; height: 60px;
     background: linear-gradient(to bottom, var(--gold-border), transparent);
-    margin: 0 auto 48px;
-    animation: fadeUp 0.8s 0.25s ease forwards;
-    opacity: 0;
+    margin: 0 auto 48px; animation: fadeUp 0.8s 0.25s ease forwards; opacity: 0;
   }
 
   .hero-statement {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--text-muted);
-    max-width: 560px;
-    line-height: 1.8;
-    margin-bottom: 56px;
-    animation: fadeUp 0.8s 0.3s ease forwards;
-    opacity: 0;
+    font-size: 15px; font-weight: 300; color: var(--text-muted);
+    max-width: 560px; line-height: 1.8; margin-bottom: 56px;
+    animation: fadeUp 0.8s 0.3s ease forwards; opacity: 0;
   }
-
   .hero-statement strong { color: var(--text); font-weight: 500; }
 
   .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.8s 0.4s ease forwards;
-    opacity: 0;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.8s 0.4s ease forwards; opacity: 0;
   }
 
   .btn-primary {
-    background: var(--gold);
-    color: #07090f;
-    border: none;
-    padding: 16px 40px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    display: inline-block;
+    background: var(--gold); color: #07090f; border: none; padding: 16px 40px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+    letter-spacing: 0.5px; border-radius: 4px; cursor: pointer;
+    transition: all 0.2s ease; text-decoration: none; display: inline-block;
   }
-
-  .btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 32px rgba(212,168,75,0.25);
-  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(212,168,75,0.25); }
 
   .btn-secondary {
-    background: transparent;
-    color: var(--text-muted);
-    border: none;
-    padding: 16px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    background: transparent; color: var(--text-muted); border: none; padding: 16px 24px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400;
+    cursor: pointer; transition: color 0.2s ease; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
   }
-
   .btn-secondary:hover { color: var(--text); }
 
   .scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    animation: fadeUp 0.8s 0.6s ease forwards;
-    opacity: 0;
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeUp 0.8s 0.6s ease forwards; opacity: 0;
   }
+  .scroll-hint span { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text-dim), transparent); animation: scrollLine 2s ease-in-out infinite; }
 
-  .scroll-hint span {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--text-dim), transparent);
-    animation: scrollLine 2s ease-in-out infinite;
-  }
-
-  .statement {
-    position: relative;
-    z-index: 1;
-    padding: 100px 48px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
+  .statement { position: relative; z-index: 1; padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
   .statement-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
   }
-
-  .statement-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--gold-border);
-    max-width: 60px;
-  }
-
-  .statement-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 3.5vw, 48px);
-    font-weight: 300;
-    line-height: 1.35;
-    color: var(--text);
-    max-width: 800px;
-    margin-bottom: 48px;
-  }
-
+  .statement-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-border); max-width: 60px; }
+  .statement-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 300; line-height: 1.35; color: var(--text); max-width: 800px; margin-bottom: 48px; }
   .statement-text em { font-style: italic; color: var(--gold); }
 
-  .signals {
-    position: relative;
-    z-index: 1;
-    padding: 80px 48px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .signals-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--gold-border);
-    border: 1px solid var(--gold-border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .signal-item {
-    background: var(--surface);
-    padding: 32px;
-    transition: background 0.2s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .signal-item::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--signal-color);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-    transform-origin: left;
-  }
-
+  .signals { position: relative; z-index: 1; padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+  .signals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); border-radius: 2px; overflow: hidden; }
+  .signal-item { background: var(--surface); padding: 32px; transition: background 0.2s ease; position: relative; overflow: hidden; }
+  .signal-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--signal-color); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
   .signal-item:hover { background: var(--surface2); }
   .signal-item:hover::before { transform: scaleX(1); }
-
-  .signal-weight {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--signal-color);
-    line-height: 1;
-    margin-bottom: 8px;
-    opacity: 0.6;
-  }
-
+  .signal-weight { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--signal-color); line-height: 1; margin-bottom: 8px; opacity: 0.6; }
   .signal-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
   .signal-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
 
-  .audiences {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--gold-border);
-    border: 1px solid var(--gold-border);
-  }
-
-  .audience-panel {
-    background: var(--surface);
-    padding: 56px 48px;
-    transition: background 0.2s ease;
-  }
-
+  .audiences { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); }
+  .audience-panel { background: var(--surface); padding: 56px 48px; transition: background 0.2s ease; }
   .audience-panel:hover { background: var(--surface2); }
-
-  .audience-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
-    display: block;
-  }
-
-  .audience-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 20px;
-  }
-
+  .audience-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: block; }
+  .audience-heading { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
   .audience-heading em { font-style: italic; color: var(--gold); }
-
   .audience-body { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 32px; }
-
   .audience-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .audience-list li { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .audience-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-family: 'Cormorant Garamond', serif; }
 
-  .audience-list li {
-    font-size: 13px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    line-height: 1.5;
-  }
-
-  .audience-list li::before {
-    content: '—';
-    color: var(--gold);
-    flex-shrink: 0;
-    font-family: 'Cormorant Garamond', serif;
-  }
-
-  .privacy {
-    position: relative;
-    z-index: 1;
-    padding: 60px 48px;
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 48px;
-    border-top: 1px solid var(--gold-border);
-    border-bottom: 1px solid var(--gold-border);
-  }
-
+  .privacy { position: relative; z-index: 1; padding: 60px 48px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 48px; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border); }
   .privacy-icon { font-size: 32px; flex-shrink: 0; }
-
-  .privacy-text h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 8px;
-  }
-
+  .privacy-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 8px; }
   .privacy-text p { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 600px; }
 
-  .cta-section {
-    position: relative;
-    z-index: 1;
-    padding: 140px 48px;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .cta-glow {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(212,168,75,0.06) 0%, transparent 70%);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-
-  .cta-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-  }
-
-  .cta-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(42px, 5vw, 72px);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+  .cta-section { position: relative; z-index: 1; padding: 140px 48px; text-align: center; overflow: hidden; }
+  .cta-glow { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,75,0.06) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+  .cta-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
+  .cta-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5vw, 72px); font-weight: 300; line-height: 1.1; margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto; }
   .cta-headline em { font-style: italic; color: var(--gold); }
   .cta-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 48px; line-height: 1.7; }
 
-  footer {
-    position: relative;
-    z-index: 1;
-    padding: 40px 48px;
-    border-top: 1px solid var(--text-dim);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
+  footer { position: relative; z-index: 1; padding: 40px 48px; border-top: 1px solid var(--text-dim); display: flex; align-items: center; justify-content: space-between; }
   .footer-logo { display: flex; align-items: baseline; gap: 2px; }
   .footer-logo span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--text-muted); }
   .footer-logo span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--gold); }
   .footer-tagline { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* Modal */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    z-index: 1000; display: flex; align-items: center; justify-content: center;
+    padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
   }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: #0d1120; border: 1px solid var(--gold-border); border-radius: 8px;
+    padding: 48px; max-width: 480px; width: 100%;
+    transform: translateY(20px); transition: transform 0.3s ease;
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .modal-logo-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--surface2); border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .modal-wordmark { display: flex; align-items: baseline; }
+  .modal-wordmark span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--text-muted); }
+  .modal-wordmark span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--gold); }
+  .modal h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; margin-bottom: 8px; }
+  .modal h2 em { font-style: italic; color: var(--gold); }
+  .modal p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 32px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .form-group input, .form-group select {
+    width: 100%; background: var(--surface2); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px; padding: 12px 14px; font-size: 14px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s ease;
+    appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--gold-border); }
+  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236e7a96' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+  .form-group select option { background: #0d1120; }
+  .modal-submit {
+    width: 100%; background: var(--gold); color: #07090f; border: none;
+    padding: 14px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+    font-weight: 600; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer;
+    transition: all 0.2s ease; margin-top: 8px;
+  }
+  .modal-submit:hover { background: var(--gold-light); }
+  .modal-close {
+    position: absolute; top: 20px; right: 20px; background: none; border: none;
+    color: var(--text-muted); font-size: 20px; cursor: pointer; line-height: 1;
+    transition: color 0.2s ease;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-success { text-align: center; padding: 20px 0; }
+  .modal-success .success-icon { font-size: 48px; margin-bottom: 16px; }
+  .modal-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; margin-bottom: 12px; }
+  .modal-success p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  @keyframes scrollLine {
-    0% { transform: scaleY(0); transform-origin: top; }
-    50% { transform: scaleY(1); transform-origin: top; }
-    51% { transform: scaleY(1); transform-origin: bottom; }
-    100% { transform: scaleY(0); transform-origin: bottom; }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -595,6 +294,7 @@ html<!DOCTYPE html>
     .audience-panel { padding: 40px 24px; }
     .privacy { padding: 40px 24px; flex-direction: column; gap: 24px; }
     footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    .modal { padding: 32px 24px; }
   }
 </style>
 </head>
@@ -603,14 +303,50 @@ html<!DOCTYPE html>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" style="position:relative;">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent">
+      <div class="modal-logo">
+        <div class="modal-logo-icon">⚡</div>
+        <div class="modal-wordmark"><span>Exec</span><span>HQ</span></div>
+      </div>
+      <h2>Request <em>access.</em></h2>
+      <p>Tell us a little about yourself and we'll be in touch with your invitation.</p>
+      <form id="accessForm" action="https://formspree.io/f/xgopdbob" method="POST">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" placeholder="e.g. Chief Marketing Officer">
+        </div>
+        <div class="form-group">
+          <label>I am a</label>
+          <select name="type" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="Executive">Executive</option>
+            <option value="Strategic Partner">Strategic Partner</option>
+          </select>
+        </div>
+        <button type="submit" class="modal-submit">Submit Request →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <nav>
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">⚡</div>
-    <div class="nav-wordmark">
-      <span>Exec</span><span>HQ</span>
-    </div>
+    <div class="nav-wordmark"><span>Exec</span><span>HQ</span></div>
   </a>
-  <a href="https://app.theexecdesk.ai" class="nav-cta">Request Access</a>
+  <button class="nav-cta" onclick="openModal()">Request Access</button>
 </nav>
 
 <section class="hero">
@@ -620,9 +356,7 @@ html<!DOCTYPE html>
     <div class="hero-badge-dot"></div>
     <span>Private Beta — Now Open</span>
   </div>
-  <h1 class="hero-headline">
-    The <em>intelligence layer</em><br>executive careers have<br>never had.
-  </h1>
+  <h1 class="hero-headline">The <em>intelligence layer</em><br>executive careers have<br>never had.</h1>
   <p class="hero-sub">Until now.</p>
   <div class="hero-divider"></div>
   <p class="hero-statement">
@@ -632,7 +366,7 @@ html<!DOCTYPE html>
     ExecHQ fills that void — privately, precisely, in real time.
   </p>
   <div class="hero-actions">
-    <a href="https://app.theexecdesk.ai" class="btn-primary">Request Access →</a>
+    <button class="btn-primary" onclick="openModal()">Request Access →</button>
     <a href="#platform" class="btn-secondary">
       Learn more
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L7 13M7 13L13 7M7 13L1 7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
@@ -663,36 +397,12 @@ html<!DOCTYPE html>
 <section class="signals reveal">
   <div class="statement-label" style="margin-bottom: 40px;">The ExecHQ Index™</div>
   <div class="signals-grid">
-    <div class="signal-item" style="--signal-color: #0a66c2;">
-      <div class="signal-weight">30%</div>
-      <div class="signal-name">LinkedIn Presence</div>
-      <div class="signal-desc">Followers, connections & engagement rate</div>
-    </div>
-    <div class="signal-item" style="--signal-color: #d4a84b;">
-      <div class="signal-weight">20%</div>
-      <div class="signal-name">Press & Media</div>
-      <div class="signal-desc">Coverage, mentions & outlet authority</div>
-    </div>
-    <div class="signal-item" style="--signal-color: #6b9ff5;">
-      <div class="signal-weight">18%</div>
-      <div class="signal-name">Speaking</div>
-      <div class="signal-desc">Events, keynotes & conference tier</div>
-    </div>
-    <div class="signal-item" style="--signal-color: #29c4b0;">
-      <div class="signal-weight">15%</div>
-      <div class="signal-name">Podcast</div>
-      <div class="signal-desc">Appearances & average audience reach</div>
-    </div>
-    <div class="signal-item" style="--signal-color: #34d470;">
-      <div class="signal-weight">10%</div>
-      <div class="signal-name">Published Content</div>
-      <div class="signal-desc">Articles, newsletters & platform authority</div>
-    </div>
-    <div class="signal-item" style="--signal-color: #e05a7a;">
-      <div class="signal-weight">7%</div>
-      <div class="signal-name">Board & Advisory</div>
-      <div class="signal-desc">Active board seats & advisory roles</div>
-    </div>
+    <div class="signal-item" style="--signal-color: #0a66c2;"><div class="signal-weight">30%</div><div class="signal-name">LinkedIn Presence</div><div class="signal-desc">Followers, connections & engagement rate</div></div>
+    <div class="signal-item" style="--signal-color: #d4a84b;"><div class="signal-weight">20%</div><div class="signal-name">Press & Media</div><div class="signal-desc">Coverage, mentions & outlet authority</div></div>
+    <div class="signal-item" style="--signal-color: #6b9ff5;"><div class="signal-weight">18%</div><div class="signal-name">Speaking</div><div class="signal-desc">Events, keynotes & conference tier</div></div>
+    <div class="signal-item" style="--signal-color: #29c4b0;"><div class="signal-weight">15%</div><div class="signal-name">Podcast</div><div class="signal-desc">Appearances & average audience reach</div></div>
+    <div class="signal-item" style="--signal-color: #34d470;"><div class="signal-weight">10%</div><div class="signal-name">Published Content</div><div class="signal-desc">Articles, newsletters & platform authority</div></div>
+    <div class="signal-item" style="--signal-color: #e05a7a;"><div class="signal-weight">7%</div><div class="signal-name">Board & Advisory</div><div class="signal-desc">Active board seats & advisory roles</div></div>
   </div>
 </section>
 
@@ -740,7 +450,7 @@ html<!DOCTYPE html>
   <p class="cta-eyebrow">Private Beta Access</p>
   <h2 class="cta-headline">Where do you <em>actually</em><br>stand right now?</h2>
   <p class="cta-sub">ExecHQ answers that question. Privately. Precisely. In real time.</p>
-  <a href="https://app.theexecdesk.ai" class="btn-primary" style="font-size:15px;padding:18px 48px;">Request Access →</a>
+  <button class="btn-primary" onclick="openModal()" style="font-size:15px;padding:18px 48px;">Request Access →</button>
   <p style="margin-top:20px;font-size:12px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:1px;">FREE FOR EXECUTIVES · INVITE ONLY · Q3 PUBLIC LAUNCH</p>
 </section>
 
@@ -751,16 +461,15 @@ html<!DOCTYPE html>
 </footer>
 
 <script>
+  // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
-
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
   });
-
   function animateRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
@@ -770,11 +479,52 @@ html<!DOCTYPE html>
   }
   animateRing();
 
+  // Scroll reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Modal
+  function openModal() {
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Form submission
+  document.getElementById('accessForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        document.getElementById('modalContent').innerHTML = `
+          <div class="modal-success">
+            <div class="success-icon">⚡</div>
+            <h3>Request received.</h3>
+            <p>Thank you for your interest in ExecHQ. We'll be in touch with your access details shortly.</p>
+          </div>
+        `;
+      } else {
+        alert('Something went wrong. Please try again or email Eric@TheExecDesk.ai directly.');
+      }
+    } catch (err) {
+      alert('Something went wrong. Please try again or email Eric@TheExecDesk.ai directly.');
+    }
+  });
+
+  // Close modal on escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
