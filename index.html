@@ -1,0 +1,780 @@
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExecHQ — The Intelligence Layer for Executive Momentum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090f;
+    --surface: #0d1120;
+    --surface2: #131825;
+    --gold: #d4a84b;
+    --gold-light: #ecbf5a;
+    --gold-dim: rgba(212,168,75,0.12);
+    --gold-border: rgba(212,168,75,0.25);
+    --text: #eef0f7;
+    --text-muted: #6e7a96;
+    --text-dim: #2a3450;
+    --teal: #29c4b0;
+    --blue: #6b9ff5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  .cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(212,168,75,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(212,168,75,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,168,75,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(7,9,15,0.95), transparent);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--gold-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .nav-wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+  }
+
+  .nav-wordmark span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  .nav-wordmark span:last-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold-dim);
+    border-color: var(--gold);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    text-align: center;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,168,75,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(41,196,176,0.06) 0%, transparent 70%);
+    top: 30%;
+    right: 20%;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-border);
+    border-radius: 100px;
+    padding: 6px 16px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-badge span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero-badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    max-width: 900px;
+    animation: fadeUp 0.8s 0.1s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-headline em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    max-width: 640px;
+    line-height: 1.5;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold-border), transparent);
+    margin: 0 auto 48px;
+    animation: fadeUp 0.8s 0.25s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-statement {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+    animation: fadeUp 0.8s 0.3s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-statement strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.8s 0.4s ease forwards;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: #07090f;
+    border: none;
+    padding: 16px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 32px rgba(212,168,75,0.25);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    padding: 16px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover { color: var(--text); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 0.8s 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .scroll-hint span {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-dim), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  .statement {
+    position: relative;
+    z-index: 1;
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .statement-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .statement-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold-border);
+    max-width: 60px;
+  }
+
+  .statement-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 300;
+    line-height: 1.35;
+    color: var(--text);
+    max-width: 800px;
+    margin-bottom: 48px;
+  }
+
+  .statement-text em { font-style: italic; color: var(--gold); }
+
+  .signals {
+    position: relative;
+    z-index: 1;
+    padding: 80px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .signals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gold-border);
+    border: 1px solid var(--gold-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .signal-item {
+    background: var(--surface);
+    padding: 32px;
+    transition: background 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .signal-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--signal-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .signal-item:hover { background: var(--surface2); }
+  .signal-item:hover::before { transform: scaleX(1); }
+
+  .signal-weight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--signal-color);
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+
+  .signal-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .signal-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  .audiences {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gold-border);
+    border: 1px solid var(--gold-border);
+  }
+
+  .audience-panel {
+    background: var(--surface);
+    padding: 56px 48px;
+    transition: background 0.2s ease;
+  }
+
+  .audience-panel:hover { background: var(--surface2); }
+
+  .audience-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .audience-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .audience-heading em { font-style: italic; color: var(--gold); }
+
+  .audience-body { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 32px; }
+
+  .audience-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  .audience-list li {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .audience-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .privacy {
+    position: relative;
+    z-index: 1;
+    padding: 60px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    border-top: 1px solid var(--gold-border);
+    border-bottom: 1px solid var(--gold-border);
+  }
+
+  .privacy-icon { font-size: 32px; flex-shrink: 0; }
+
+  .privacy-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .privacy-text p { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 600px; }
+
+  .cta-section {
+    position: relative;
+    z-index: 1;
+    padding: 140px 48px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cta-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,168,75,0.06) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .cta-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .cta-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-headline em { font-style: italic; color: var(--gold); }
+  .cta-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 48px; line-height: 1.7; }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 40px 48px;
+    border-top: 1px solid var(--text-dim);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo { display: flex; align-items: baseline; gap: 2px; }
+  .footer-logo span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--text-muted); }
+  .footer-logo span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--gold); }
+  .footer-tagline { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .hero { padding: 100px 24px 80px; }
+    .statement, .signals, .cta-section { padding: 60px 24px; }
+    .signals-grid { grid-template-columns: repeat(2, 1fr); }
+    .audiences { grid-template-columns: 1fr; }
+    .audience-panel { padding: 40px 24px; }
+    .privacy { padding: 40px 24px; flex-direction: column; gap: 24px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">⚡</div>
+    <div class="nav-wordmark">
+      <span>Exec</span><span>HQ</span>
+    </div>
+  </a>
+  <a href="https://app.theexecdesk.ai" class="nav-cta">Request Access</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    <span>Private Beta — Now Open</span>
+  </div>
+  <h1 class="hero-headline">
+    The <em>intelligence layer</em><br>executive careers have<br>never had.
+  </h1>
+  <p class="hero-sub">Until now.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-statement">
+    Every major economic system has an intelligence layer.<br>
+    Financial markets. Marketing. Enterprise.<br>
+    <strong>The executive economy has never had this.</strong><br>
+    ExecHQ fills that void — privately, precisely, in real time.
+  </p>
+  <div class="hero-actions">
+    <a href="https://app.theexecdesk.ai" class="btn-primary">Request Access →</a>
+    <a href="#platform" class="btn-secondary">
+      Learn more
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L7 13M7 13L13 7M7 13L1 7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+    </a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section class="statement reveal" id="platform">
+  <div class="statement-label">The Problem</div>
+  <p class="statement-text">
+    The tools executives rely on — LinkedIn, coaching, PR, content —
+    shape and amplify what is visible. <em>None reveal what is actually
+    forming beneath the surface.</em> Momentum develops before it becomes
+    visible. Opportunity closes before most executives know it opened.
+    Those who see it first, move first.
+  </p>
+  <p class="statement-text" style="font-size: clamp(16px, 2vw, 22px); color: var(--text-muted); margin-bottom: 0;">
+    ExecHQ is the private command center for executive momentum —
+    know exactly where you stand, build your presence across the signals
+    that matter, and get found by the right partners on your own terms.
+  </p>
+</section>
+
+<section class="signals reveal">
+  <div class="statement-label" style="margin-bottom: 40px;">The ExecHQ Index™</div>
+  <div class="signals-grid">
+    <div class="signal-item" style="--signal-color: #0a66c2;">
+      <div class="signal-weight">30%</div>
+      <div class="signal-name">LinkedIn Presence</div>
+      <div class="signal-desc">Followers, connections & engagement rate</div>
+    </div>
+    <div class="signal-item" style="--signal-color: #d4a84b;">
+      <div class="signal-weight">20%</div>
+      <div class="signal-name">Press & Media</div>
+      <div class="signal-desc">Coverage, mentions & outlet authority</div>
+    </div>
+    <div class="signal-item" style="--signal-color: #6b9ff5;">
+      <div class="signal-weight">18%</div>
+      <div class="signal-name">Speaking</div>
+      <div class="signal-desc">Events, keynotes & conference tier</div>
+    </div>
+    <div class="signal-item" style="--signal-color: #29c4b0;">
+      <div class="signal-weight">15%</div>
+      <div class="signal-name">Podcast</div>
+      <div class="signal-desc">Appearances & average audience reach</div>
+    </div>
+    <div class="signal-item" style="--signal-color: #34d470;">
+      <div class="signal-weight">10%</div>
+      <div class="signal-name">Published Content</div>
+      <div class="signal-desc">Articles, newsletters & platform authority</div>
+    </div>
+    <div class="signal-item" style="--signal-color: #e05a7a;">
+      <div class="signal-weight">7%</div>
+      <div class="signal-name">Board & Advisory</div>
+      <div class="signal-desc">Active board seats & advisory roles</div>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative;z-index:1;padding:0 48px 100px;max-width:1196px;margin:0 auto;" class="reveal">
+  <div class="audiences">
+    <div class="audience-panel">
+      <span class="audience-tag">For Executives</span>
+      <h2 class="audience-heading">Your career, <em>on your terms.</em></h2>
+      <p class="audience-body">ExecHQ Momentum is free, private, and built entirely around you. No employer ever sees your data. You control everything.</p>
+      <ul class="audience-list">
+        <li>A precise, real-time view of where your momentum stands</li>
+        <li>AI coaching calibrated to your actual signal data</li>
+        <li>Morning intelligence curated for your role and expertise</li>
+        <li>Opportunities matched to your goals — with specific next steps</li>
+        <li>LinkedIn post generator built around your perspective</li>
+        <li>Know when the timing is right to make your next move</li>
+      </ul>
+    </div>
+    <div class="audience-panel" style="border-left: 1px solid var(--gold-border);">
+      <span class="audience-tag">For Strategic Partners</span>
+      <h2 class="audience-heading">Precision access, <em>before the market knows.</em></h2>
+      <p class="audience-body">ExecHQ Insights gives verified partners something that has never existed — early visibility into executive momentum before it becomes publicly visible.</p>
+      <ul class="audience-list">
+        <li>Aggregate intelligence across the executive ecosystem</li>
+        <li>Anonymized signal data — privacy-safe and consent-based</li>
+        <li>Identify emerging leadership clusters before they surface</li>
+        <li>Engage high-momentum executives through a verified channel</li>
+        <li>Move from reactive outreach to precision alignment</li>
+        <li>Earlier access — before the best candidates are off the market</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="privacy reveal" style="max-width:1100px;margin:0 auto;">
+  <div class="privacy-icon">🔒</div>
+  <div class="privacy-text">
+    <h3>Private by design. Yours by default.</h3>
+    <p>Your data is never sold, never shared with employers, and never tied back to you personally. The only data that leaves the platform is fully anonymized — shared with a select group of verified strategic partners only if you choose to opt in. You remain in full control of your identity and timing, always.</p>
+  </div>
+</section>
+
+<section class="cta-section reveal" id="request">
+  <div class="cta-glow"></div>
+  <p class="cta-eyebrow">Private Beta Access</p>
+  <h2 class="cta-headline">Where do you <em>actually</em><br>stand right now?</h2>
+  <p class="cta-sub">ExecHQ answers that question. Privately. Precisely. In real time.</p>
+  <a href="https://app.theexecdesk.ai" class="btn-primary" style="font-size:15px;padding:18px 48px;">Request Access →</a>
+  <p style="margin-top:20px;font-size:12px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:1px;">FREE FOR EXECUTIVES · INVITE ONLY · Q3 PUBLIC LAUNCH</p>
+</section>
+
+<footer>
+  <div class="footer-logo"><span>Exec</span><span>HQ</span></div>
+  <p class="footer-tagline">The Intelligence Layer for Executive Momentum</p>
+  <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:1px;">© 2026 ExecHQ™</p>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
